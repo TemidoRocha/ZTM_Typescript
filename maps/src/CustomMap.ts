@@ -1,10 +1,12 @@
 // Instructions to every other class
 // on how they can be an argument to 'addMarker'
-interface Mappable {
+export interface Mappable {
   location: {
     lat: number;
     lng: number;
   };
+  markerContent(): string;
+  color: string;
 }
 
 /**
@@ -21,7 +23,7 @@ export class CustomMap {
         lat: 0,
         lng: 0,
       },
-      zoom: 5,
+      zoom: 2,
     });
   }
 
@@ -34,12 +36,20 @@ export class CustomMap {
    * instructions on how to be an argument to 'addMarker'
    */
   addMarker(mappable: Mappable): void {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng,
       },
+    });
+
+    marker.addListener('click', () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: mappable.markerContent(),
+      });
+
+      infoWindow.open(this.googleMap, marker);
     });
   }
 }
