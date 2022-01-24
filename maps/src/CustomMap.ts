@@ -10,7 +10,8 @@ export class CustomMap {
   private googleMap: google.maps.Map;
 
   constructor(divId: string) {
-    this.googleMap = new google.maps.Map(document.getElementById(divId), {
+    let element: HTMLElement = document.getElementById(divId) as HTMLElement;
+    this.googleMap = new google.maps.Map(element, {
       center: {
         lat: 0,
         lng: 0,
@@ -28,5 +29,13 @@ export class CustomMap {
       },
     });
   }
-  addCompanyMarker(company: Company): void {}
+  addCompanyMarker(company: Company): void {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: company.location.lat,
+        lng: company.location.lng,
+      },
+    });
+  }
 }
