@@ -8,17 +8,28 @@
  * bubble sort
  */
 class Sorter {
-  constructor(public collection: number[]) {}
+  constructor(public collection: number[] | string) {}
 
   sort(): void {
     const { length } = this.collection;
 
     for (let i = 0; i < length; i++) {
       for (let j = 0; j < length - 1 - 1; j++) {
-        if (this.collection[j] > this.collection[j + 1]) {
-          const leftHand = this.collection[j];
-          this.collection[j] = this.collection[j + 1];
-          this.collection[j + 1] = leftHand;
+        // if collection is an array of numbers
+        // we use a type guard. instanceof we narrow down every type of value
+        if (this.collection instanceof Array) {
+          if (this.collection[j] > this.collection[j + 1]) {
+            const leftHand = this.collection[j];
+            this.collection[j] = this.collection[j + 1];
+            this.collection[j + 1] = leftHand;
+          }
+        }
+
+        // if collection is a string
+        // ^^ logic to compare and swap characters in a string
+        // another way to implement a type guard. It Narrow type of a value to a primitive type
+        if (typeof this.collection === 'string') {
+          //
         }
       }
     }
