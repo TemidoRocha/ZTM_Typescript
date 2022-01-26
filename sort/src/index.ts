@@ -7,35 +7,16 @@
 /**
  * bubble sort
  */
-class Sorter {
-  constructor(public collection: number[] | string) {}
+import { Sorter } from './Sorter';
+import { NumbersCollection } from './NumbersCollection';
+import { CharactersCollection } from './CharactersCollection';
 
-  sort(): void {
-    const { length } = this.collection;
-
-    for (let i = 0; i < length; i++) {
-      for (let j = 0; j < length - 1 - 1; j++) {
-        // if collection is an array of numbers
-        // we use a type guard. instanceof we narrow down every type of value
-        if (this.collection instanceof Array) {
-          if (this.collection[j] > this.collection[j + 1]) {
-            const leftHand = this.collection[j];
-            this.collection[j] = this.collection[j + 1];
-            this.collection[j + 1] = leftHand;
-          }
-        }
-
-        // if collection is a string
-        // ^^ logic to compare and swap characters in a string
-        // another way to implement a type guard. It Narrow type of a value to a primitive type
-        if (typeof this.collection === 'string') {
-          //
-        }
-      }
-    }
-  }
-}
-
-const sorter = new Sorter([10, 3, -5, 0]);
+const numbersCollection = new NumbersCollection([-10000, 3, -5, 0]);
+const sorter = new Sorter(numbersCollection);
 sorter.sort();
-console.log(sorter);
+console.log(numbersCollection.data);
+
+const charactersCollection = new CharactersCollection('Xfqochow');
+const _sort = new Sorter(charactersCollection);
+_sort.sort();
+console.log(charactersCollection.data);
