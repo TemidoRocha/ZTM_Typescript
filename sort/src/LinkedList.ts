@@ -1,3 +1,5 @@
+import { Sorter } from './Sorter';
+
 class Node {
   next: Node | null = null;
   constructor(public data: number) {}
@@ -6,7 +8,7 @@ class Node {
 /**
  * the idea of the linked list is really just for exercise
  */
-export class LinkedList {
+export class LinkedList extends Sorter {
   head: Node | null = null;
 
   add(data: number): void {

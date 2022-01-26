@@ -12,23 +12,20 @@ import { NumbersCollection } from './NumbersCollection';
 import { CharactersCollection } from './CharactersCollection';
 import { LinkedList } from './LinkedList';
 
-const numbersCollection = new NumbersCollection([-10000, 3, -5, 0]);
-const sorter = new Sorter(numbersCollection);
-sorter.sort();
+const numbersCollection = new NumbersCollection([10000, 3, -5, 0]);
+numbersCollection.sort();
 console.log(numbersCollection.data);
 
-const charactersCollection = new CharactersCollection('Xfqochow');
-const _sort = new Sorter(charactersCollection);
-_sort.sort();
+const charactersCollection = new CharactersCollection('XfqocUIOGhow');
+charactersCollection.sort();
 console.log(charactersCollection.data);
 
 const linkedList = new LinkedList();
 linkedList.add(500);
 linkedList.add(53);
-linkedList.add(-450);
-linkedList.add(-5);
 linkedList.add(6540);
+linkedList.add(-5);
+linkedList.add(-450);
 
-const __sorter = new Sorter(linkedList);
-__sorter.sort();
+linkedList.sort();
 linkedList.print();
