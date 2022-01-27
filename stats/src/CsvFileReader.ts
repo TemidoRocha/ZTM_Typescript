@@ -5,15 +5,8 @@
  */
 import fs from 'fs';
 
-/**
- * Generics
- * 1. Like function arguments, but for types in class/function definitions
- * 2. Allows us to define the type of a preperty/argument/return value at a future point
- * 3. Used heavily when writing reusable code
- */
-export abstract class CsvFileReader<T> {
-  abstract mapRow(row: string[]): T;
-  data: T[] = [];
+export class CsvFileReader {
+  data: string[][] = [];
 
   constructor(public filename: string) {}
 
@@ -23,7 +16,6 @@ export abstract class CsvFileReader<T> {
         encoding: 'utf-8',
       })
       .split('\n')
-      .map((row: string): string[] => row.split(','))
-      .map(this.mapRow);
+      .map((row: string): string[] => row.split(','));
   }
 }
