@@ -9,6 +9,11 @@ interface AppState {
   counter: number;
 }
 
+// function component
+// const App = (props: AppProps): JSX.Element => {
+//   return <div>{props.color}</div>;
+// };
+
 // React componenet as a type notation in order to pass the type
 class App extends React.Component<AppProps> {
   // in the world of TS it this 2 ways to define the state are completely diferent
