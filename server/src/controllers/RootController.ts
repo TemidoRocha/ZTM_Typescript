@@ -23,7 +23,7 @@ class RootController {
     } else {
       res.send(`
       <div>You are logged not logged in</div>
-      <a href="/login">Login</a>
+      <a href="/auth/login">Login</a>
     `);
     }
   }
